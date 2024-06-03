@@ -7,7 +7,7 @@ from werkzeug.utils import secure_filename
 import os
 import tensorflow as tf
 import logging
-
+from flask_cors import CORS
 
 
 def detect_and_save_table(image_path):
@@ -199,7 +199,7 @@ def extracting_table():
 
 
 app = Flask(__name__)
-
+CORS(app)
 # Load PaddleOCR once
 ocr_model = None
 
@@ -213,7 +213,7 @@ with app.app_context():
         print(f"An error occurred while loading the model: {e}")
 
 # Set up a route for OCR processing
-@app.route('/pp', methods=['POST'])
+@app.route('/', methods=['POST'])
 def process_image():
     app.logger.info("Processing image...")
     if 'file' not in request.files:
