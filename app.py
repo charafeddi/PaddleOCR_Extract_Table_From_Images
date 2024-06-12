@@ -13,7 +13,7 @@ from PIL import Image
 from scipy.ndimage import interpolation as inter
 
 app = Flask(__name__)
-CORS(app)
+CORS(app) #mechanism used to allow web app to access resource (e.g. APIs, images, fonts) from another domain.
 
 # Load PaddleOCR once
 ocr_model = None
